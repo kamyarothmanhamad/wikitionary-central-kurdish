@@ -1,48 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const languageSelector = document.querySelector('.language-switcher select');
-    let currentLanguage = 'ckb'; // Default language
+    const copyButtons = document.querySelectorAll('.copy-btn');
 
-    function loadContent(lang) {
-        fetch(`content_${lang}.json`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                document.querySelector('#about p').textContent = data.about;
-                document.querySelector('#importance p').textContent = data.importance;
-                document.querySelector('#contribute p').textContent = data.contribute;
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const codeBlock = this.closest('.code-block');
+            const code = codeBlock.querySelector('code').textContent;
 
-                const templatesSection = document.getElementById('templates');
-                data.templates.forEach((template, index) => {
-                    const templateArticle = templatesSection.querySelectorAll('.template')[index];
-                    if (templateArticle) {
-                        templateArticle.querySelector('pre code').textContent = template.content;
-                        templateArticle.querySelector('.example').innerHTML = template.example;
-                    }
-                });
-
-                // Update the page title and meta description
-                document.title = data.pageTitle;
-                document.querySelector('meta[name="description"]').setAttribute('content', data.metaDescription);
-            })
-            .catch(error => {
-                console.error('Error loading content:', error);
-                // Display an error message to the user
-                document.body.innerHTML += `<div class="error-message">Error loading content. Please try again later.</div>`;
+            navigator.clipboard.writeText(code).then(() => {
+                button.classList.add('copied');
+                setTimeout(() => button.classList.remove('copied'), 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
             });
-    }
-
-    // Initial content load
-    loadContent(currentLanguage);
-
-    // Language switcher functionality
-    languageSelector.addEventListener('change', function() {
-        currentLanguage = this.value;
-        loadContent(currentLanguage);
-        document.documentElement.lang = currentLanguage;
-        document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+        });
     });
 });
