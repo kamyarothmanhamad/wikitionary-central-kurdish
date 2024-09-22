@@ -13,6 +13,12 @@ body {
     padding: 20px;
 }
 
+header h1 {
+    color: white; /* This will override the general h1 color for the header */
+    margin: 0; /* This removes default margins, making it align better in the header */
+}
+
+
 header {
     background-color: #2c3e50;
     color: white;
