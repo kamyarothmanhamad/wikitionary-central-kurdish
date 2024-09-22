@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ڕێبەری ویکیفەرهەنگی کوردیی ناوەندی</title>
+    <meta name="description" content="ڕێبەری فەرمی بۆ بەکارهێنان و بەشداریکردن لە ویکیفەرهەنگی کوردیی ناوەندی">
+    <meta name="keywords" content="ویکیفەرهەنگ, کوردی, فەرهەنگ, ڕێبەر">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -11,46 +13,68 @@
     <header>
         <div class="container">
             <h1>ڕێبەری ویکیفەرهەنگی کوردیی ناوەندی</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">دەربارە</a></li>
+                    <li><a href="#importance">گرنگی</a></li>
+                    <li><a href="#contribute">بەشداریکردن</a></li>
+                    <li><a href="#templates">قاڵبەکان</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <select aria-label="زمان هەڵبژێرە">
+                    <option value="ckb" selected>کوردی</option>
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
         </div>
     </header>
+
     <main class="container">
         <section id="about">
             <h2>ویکیفەرهەنگ چییە؟</h2>
             <p><!-- Content about Wiktionary --></p>
         </section>
+
         <section id="importance">
             <h2>گرنگی ویکیفەرهەنگ</h2>
             <p><!-- Content about the importance of Wiktionary --></p>
         </section>
+
         <section id="contribute">
             <h2>چۆن بەشداری بکەین؟</h2>
             <p><!-- Content about how to contribute --></p>
         </section>
+
         <section id="templates">
             <h2>قاڵبەکان</h2>
-            <div class="template">
+            <article class="template">
                 <h3>قاڵبی ١: قاڵبی سادە</h3>
                 <pre><code><!-- Template 1 content --></code></pre>
                 <h4>نموونە:</h4>
                 <div class="example">
                     <!-- Example for Template 1 -->
                 </div>
-            </div>
-            <div class="template">
+            </article>
+
+            <article class="template">
                 <h3>قاڵبی ٢: قاڵبی پێشکەوتوو</h3>
                 <pre><code><!-- Template 2 content --></code></pre>
                 <h4>نموونە:</h4>
                 <div class="example">
                     <!-- Example for Template 2 -->
                 </div>
-            </div>
+            </article>
         </section>
     </main>
+
     <footer>
         <div class="container">
-            <p>© ٢٠٢٣ ڕێبەری ویکیفەرهەنگی کوردیی ناوەندی. هەموو مافەکان پارێزراون.</p>
+            <p>&copy; ٢٠٢٣ ڕێبەری ویکیفەرهەنگی کوردیی ناوەندی. هەموو مافەکان پارێزراون.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
