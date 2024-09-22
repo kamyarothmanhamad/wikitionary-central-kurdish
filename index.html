@@ -6,6 +6,20 @@
     <title>ڕێبەری ویکی فەرهەنگی کوردی ناوەندی</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .code-block {
+            position: relative;
+            margin-bottom: 1em;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -71,7 +85,7 @@
 * ئینگلیزی: {{t|en|word}}
 
 [[Category:ckb:پۆلی وشەکە]]</code></pre>
-                    <button class="copy-btn" aria-label="Copy to clipboard">
+                    <button class="copy-btn" aria-label="Copy to clipboard" onclick="copyToClipboard(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
                             <title>Copy to clipboard</title>
                             <path d="M0 0h24v24H0z" fill="none"/>
@@ -166,22 +180,6 @@
 #:: '''لاتینی:''' <!-- لاتینی کردنی نموونەکە -->
 #:: '''ئینگلیزی:''' <!-- وەرگێڕانی ئینگلیزی -->
 
-===جێناو===
-{{head|ckb|جێناو}}
-
-'''وشە''' (transliteration)
-
-# پێناسە
-#: '''نموونە:''' <!-- نموونەیەک بە کوردی -->
-#:: '''لاتینی:''' <!-- لاتینی کردنی نموونەکە -->
-#:: '''ئینگلیزی:''' <!-- وەرگێڕانی ئینگلیزی -->
-
-===وشە لێکدراوەکان===
-* <!-- وشە لێکدراوەکان -->
-
-===وشە پەیوەندیدارەکان===
-* <!-- وشە پەیوەندیدارەکان -->
-
 ===وەرگێڕان===
 {{trans-top|پێناسە بە ئینگلیزی}}
 * عەرەبی: {{t|ar|وشە|tr=transliteration}}
@@ -200,7 +198,7 @@
 * <!-- سەرچاوەکان بۆ فەرهەنگە کوردییەکان یان سەرچاوەکانی تر -->
 
 [[Category:ckb:پۆلی وشەکە]]</code></pre>
-                    <button class="copy-btn" aria-label="Copy to clipboard">
+                    <button class="copy-btn" aria-label="Copy to clipboard" onclick="copyToClipboard(this)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
                             <title>Copy to clipboard</title>
                             <path d="M0 0h24v24H0z" fill="none"/>
@@ -233,5 +231,20 @@
             <p>&copy; 2024 ویکی فەرهەنگی کوردیی ناوەندی</p>
         </div>
     </footer>
+
+    <script>
+        function copyToClipboard(button) {
+            const codeBlock = button.parentElement.querySelector('pre code');
+            const codeText = codeBlock.innerText;
+
+            navigator.clipboard.writeText(codeText)
+                .then(() => {
+                    alert('کۆدی پەیامەوە کۆپی کرا!');
+                })
+                .catch(err => {
+                    console.error('Error copying text: ', err);
+                });
+        }
+    </script>
 </body>
 </html>
