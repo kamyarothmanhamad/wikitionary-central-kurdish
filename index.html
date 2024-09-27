@@ -6,17 +6,20 @@
     <title>ڕێبەری ویکی فەرهەنگی کوردی ناوەندی</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-        function copyToClipboard() {
-            const codeBlock = document.querySelector('.code-block code');
-            const text = codeBlock.innerText;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('کۆدەکە کۆپی کرا');
-            }).catch(err => {
-                console.error('هەڵە ڕویدا لە کاتی کۆپی کردندا:', err);
-            });
+    <style>
+        .code-block {
+            position: relative;
+            margin: 1em 0;
         }
-    </script>
+        .copy-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -60,10 +63,8 @@
 
         <section id="templates">
             <h2>قاڵبی ئامادە بۆ دەستپێکردن </h2>
-            <button onclick="copyToClipboard()">کۆپی بکە</button>
             <div class="code-block">
-                <pre><code>
-
+                <pre><code id="code-to-copy">
 {{head|ckb|ناو/هاوەڵکار/هاوەڵناو/هتد}}
 ===جۆری وشەکە لە ڕووی ئاخاوتن===
 * ناو/هاوەڵکار/هاوەڵناو/هتد
@@ -77,6 +78,7 @@
 ===پێناسە ===
 * لێرە
 <--  لە دێرێک سەرترەوە پێناسەیەک دابنێ بۆ وشەکە-->
+
 
 ===لاتینی===
 *لێرە
@@ -99,9 +101,14 @@
 * فارسی: {{t|fa|هاوتاکەی}}
 * تورکی: {{t|tr|هاوتاکەی}}
 <--لە شوێنی وشەی "هاوتاکی" وشەکە لە زامانەکانی تر دا بنووسەرەوە-->
-
-
-</code></pre>
+                </code></pre>
+                <button class="copy-btn" aria-label="Copy to clipboard" onclick="copyToClipboard()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
+                        <title>Copy to clipboard</title>
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                </button>
             </div>
         </section>
     </main>
@@ -109,5 +116,18 @@
     <footer class="container">
         <p>&copy; 2024 ویکی فەرهەنگی کوردی ناوەندی | پەرەپێدەر <a href="https://x.com/KamyarOthman" target="_blank">کامیار ع.</a></p>
     </footer>
+
+    <script>
+        function copyToClipboard() {
+            const codeBlock = document.getElementById('code-to-copy');
+            const textArea = document.createElement('textarea');
+            textArea.value = codeBlock.innerText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            alert('کۆدی سەرکەوتووی بەرز بوو!');
+        }
+    </script>
 </body>
 </html>
