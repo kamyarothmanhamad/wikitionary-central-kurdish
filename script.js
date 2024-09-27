@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     copyButtons.forEach(button => {
         button.addEventListener('click', function() {
+            console.log("Button clicked!"); // Check if button click is detected
             const codeBlock = this.closest('.code-block');
             const code = codeBlock.querySelector('code').textContent;
 
