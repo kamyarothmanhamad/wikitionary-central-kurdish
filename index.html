@@ -6,6 +6,17 @@
     <title>ڕێبەری ویکی فەرهەنگی کوردی ناوەندی</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        function copyToClipboard() {
+            const codeBlock = document.querySelector('.code-block code');
+            const text = codeBlock.innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('کۆدەکە کۆپی کرا');
+            }).catch(err => {
+                console.error('هەڵە ڕویدا لە کاتی کۆپی کردندا:', err);
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -48,9 +59,8 @@
         </section>
 
         <section id="templates">
-            <h2>قالب بۆ دەستپێکردن</h2>
-                <p>بۆ دەستپێکردن دەتوانی ئەم قاڵبەی خوارەوە لەبەر گریتەوە. دڵنیابەرەوە پێش ئەوەی لە پەڕەی ویکیفەرهەنگ بی چەسپێنیت گۆڕانکاری پێویستت لە قالبەکە دا کردبێت</p>
-            
+            <h2>قاڵبی ئامادە بۆ دەستپێکردن </h2>
+            <button onclick="copyToClipboard()">کۆپی بکە</button>
             <div class="code-block">
                 <pre><code>
 
